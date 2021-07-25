@@ -36,7 +36,7 @@ RSpec.describe "/users", type: :request do
     
     describe "GET /edit" do
         let(:user) {create(:user)}
-        let(:url) { "/users/#{user.id}"}
+        let(:url) { "/users/#{user.id}/edit"}
         it "render a successful response" do
         get url
         expect(response).to be_successful
@@ -60,6 +60,8 @@ RSpec.describe "/users", type: :request do
             it "Create user with right attributes" do
                 expect(User.last.full_name).to eql(@user_attributes[:full_name])            
             end
+
+           
         end
         
         context "with invalid parameters" do
@@ -126,7 +128,7 @@ RSpec.describe "/users", type: :request do
 
         it 'returns success status' do
             delete url
-            expect(response).to have_http_status(:no_content)
+            expect(response).to have_http_status(302)
         end
     end
     

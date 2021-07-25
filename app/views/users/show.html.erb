@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<section class="py-5">
+<div class="container px-4 px-lg-5 mt-5">
+  <p id="notice" class="alert alert-success"><%= notice %></p>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @user.full_name %>
-</p>
+  <p>
+    <strong>Full name:</strong>
+    <%= @user.full_name %>
+  </p>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
+  <p>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <p>
+    <strong>Avatar: </strong>
+    <%= image_tag @user.avatar %>
+  </p>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</div>
+
+</section>
