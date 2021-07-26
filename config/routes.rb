@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_in' => 'devise/sessions#new'
   end
-  resources :users, :controller => "users"
+  resources :users, :controller => "users" do 
+    collection { post :import }
+  end
   devise_for :users
   
   devise_scope :user do

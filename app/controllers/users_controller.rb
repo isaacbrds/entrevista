@@ -53,6 +53,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def import 
+    #User.import(params[:file])
+    #redirect_to users_url, notice: "Users imported."
+    respond_to do |format|
+      format.js {  }
+      format.json { head :no_content }
+    end
+  end
+
   private 
 
   def set_user 
