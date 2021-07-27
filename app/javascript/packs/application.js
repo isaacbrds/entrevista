@@ -8,11 +8,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import 'bootstrap'
 import '@popperjs/core'
-import '../stylesheets/application'
 import "channels"
+import '../stylesheets/application'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+
+
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-

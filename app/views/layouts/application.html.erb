@@ -12,14 +12,20 @@
 
   <body>
     <div class="container">
-      <%= render "shared/navigation" %>
-    
-      <p id="notice">
-        <%= notice %>
-      </p>
-      <p id="error"><%= flash[:error] %></p>
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>" role="alert">
+              <%= value %>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+      
       <%= yield %>
+
+      
       <%= render "shared/footer" %>
+
+      
+      
     </div>
   </body>
 </html>

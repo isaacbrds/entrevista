@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-    before_action :authenticate_user!
-    
+        
     def before_sign_in_path_for(resource)
         login_path
     end

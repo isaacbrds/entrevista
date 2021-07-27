@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :authenticate_user! , except: :create
+  load_and_authorize_resource 
+  #skip_authorize_resource :only => :create
+
   def index
     @users = User.all
   end
@@ -54,12 +57,13 @@ class UsersController < ApplicationController
   end
 
   def import 
-    #User.import(params[:file])
-    #redirect_to users_url, notice: "Users imported."
+    User.import(params[:file])
+    ProgressBarJob.set(wait: 1.second).perform_now
     respond_to do |format|
-      format.js {  }
+      format.js { redirect_to users_url, notice: "The file was successfuly imported" }
       format.json { head :no_content }
     end
+    
   end
 
   private 

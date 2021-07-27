@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :full_name, presence: true
+  #validates :full_name, presence: true
   enum role: [:admin, :client]
   has_one_attached :avatar
 
@@ -27,12 +27,4 @@ class User < ApplicationRecord
         user.save
       end
     end
-  def self.open_spreadsheet(file)
-    case File.extname(file.original_filename)
-    when ".csv" then Csv.new(file.path, nil, :ignore)
-    when ".xls" then Roo::Excel.new(file.path, nil, :ignore)
-    when ".xlsx" then Roo::Excelx.new(file.path)
-    else raise "Unknown file type: #{file.original_filename}"
-    end
-  end
-end
+ end
